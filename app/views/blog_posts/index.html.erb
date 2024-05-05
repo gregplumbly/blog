@@ -1,7 +1,14 @@
 <h1>Blog Posts</h1>
 <% @blog_posts.each do |blog_post| %>
   <div>
-    <h2><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
+    <div class="flex items-center"> <!-- Added "items-center" class to vertically align content -->
+      <h2><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
+      <% if blog_post.draft? %>
+        <div class="rounded bg-gray-100 text-gray-900 h-6 px-2">Draft</div>
+      <% elsif blog_post.scheduled? %>
+        <div class="rounded bg-blue-100 text-gray-900 h-6 px-2">Scheduled</div>
+      <% end %>
+    </div>
     <p><%= blog_post.body %></p>
   </div>
 <% end %>
