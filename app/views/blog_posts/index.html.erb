@@ -1,4 +1,4 @@
-<h1>Blog Posts</h1>
+<h1>Studio Notes</h1>
 <% @blog_posts.each do |blog_post| %>
   <div>
     <div class="flex items-center"> <!-- Added "items-center" class to vertically align content -->
@@ -9,6 +9,6 @@
         <div class="rounded bg-blue-100 text-gray-900 h-6 px-2">Scheduled</div>
       <% end %>
     </div>
-    <p><%= blog_post.body %></p>
+    <p><%= blog_post.content %></p>
   </div>
 <% end %>
