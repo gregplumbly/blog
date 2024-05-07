@@ -1,14 +1,21 @@
-<h1>Studio Notes</h1>
-<% @blog_posts.each do |blog_post| %>
-  <div>
-    <div class="flex items-center"> <!-- Added "items-center" class to vertically align content -->
-      <h2><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
-      <% if blog_post.draft? %>
-        <div class="rounded bg-gray-100 text-gray-900 h-6 px-2">Draft</div>
-      <% elsif blog_post.scheduled? %>
-        <div class="rounded bg-blue-100 text-gray-900 h-6 px-2">Scheduled</div>
-      <% end %>
+
+<% total_posts = @blog_posts.count %>
+<% cols = (total_posts % 3 == 1 && total_posts > 3) ? 'md:grid-cols-2' : 'md:grid-cols-3' %>
+
+<div class="grid grid-cols-1 <%= cols %> lg:grid-cols-3 gap-4 p-4">
+  <% @blog_posts.each do |blog_post| %>
+    <div class="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="p-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-semibold text-gray-900"><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
+          <% if blog_post.draft? %>
+            <div class="rounded bg-gray-200 text-gray-900 px-3 py-1 text-sm">Draft</div>
+          <% elsif blog_post.scheduled? %>
+            <div class="rounded bg-blue-200 text-gray-900 px-3 py-1 text-sm">Scheduled</div>
+          <% end %>
+        </div>
+        <p class="mt-2 text-gray-600 text-sm"><%= blog_post.content %></p>
+      </div>
     </div>
-    <p><%= blog_post.content %></p>
-  </div>
-<% end %>
+  <% end %>
+</div>

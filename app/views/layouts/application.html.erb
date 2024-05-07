@@ -9,13 +9,19 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="prose mx-auto">
+  <body class="mx-auto">
+    <h1>Studio Notes</h1>
+    <div class="w-full bg-navblue-950 h-12"></div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       <%= link_to "New blog post", new_blog_post_path %>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
     <% end %>
+    <main class="mx-auto flex">
     <%= yield %>
+    </main>
   </body>
 </html>
+
+
