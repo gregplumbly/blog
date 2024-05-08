@@ -26,7 +26,6 @@ Rails.application.configure do
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
   #
-  config.action_controller.asset_host = "d2pmg15i1km54q.cloudfront.net"
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
